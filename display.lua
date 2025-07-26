@@ -35,7 +35,7 @@ local function showDisplay()
     else
         monitor.setTextColour(colours.red)
     end
-    monitor.write("Max:"..formatNumber(capacity,7).."su")
+    monitor.write("Max: "..formatNumber(capacity,7).."su")
 
     monitor.setCursorPos(1,3)
     if left > 16384 then

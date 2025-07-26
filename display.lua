@@ -49,3 +49,5 @@ local function showDisplay()
     end
     monitor.write("Left:"..formatNumber(left, 7).."su")
 end
+
+showDisplay()

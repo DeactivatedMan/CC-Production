@@ -1,3 +1,9 @@
-{
-    
-}
+[
+    { "name": "tree",       "status": false },
+    { "name": "cow",        "status": false },
+    { "name": "wheat",      "status": false },
+    { "name": "flax",       "status": false },
+    { "name": "iron",       "status": false },
+    { "name": "thorium",    "status": false },
+    { "name": "fuel",       "status": false }
+]

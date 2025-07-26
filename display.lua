@@ -5,6 +5,16 @@ local function formatNumber(num, chars)
     return string.format("%"..tostring(chars).."d", tostring(num))
 end
 
+local function formatText(str)
+    str = tostring(str)
+    if #str > 9 then
+        return str:sub(1, 9)
+    else
+        return str .. string.rep(" ", 9 - #str)
+    end
+end
+
+
 local function showDisplay()
     local stress = stresso.getStress()
     local capacity = stresso.getStressCapacity()
@@ -13,6 +23,7 @@ local function showDisplay()
     monitor.clear()
     monitor.setTextScale(2)
 
+    -- Stress Guages
     monitor.setCursorPos(1,1)
     if stress < 0.5 * capacity then
         monitor.setTextColour(colours.green)
@@ -48,6 +59,35 @@ local function showDisplay()
         monitor.setTextColour(colours.red)
     end
     monitor.write("Left:"..formatNumber(left, 7).."su")
+
+    -- Machinery statuses
+    monitor.setTextColour(colours.lime)
+
+    -- Loop thru machine statuses, max of 12
+    local file = fs.open("machines.json", "r")
+    local jsonStr = file.readAll()
+    file.close()
+
+    local data = textutils.unserialiseJSON(jsonStr)
+
+    for i,entry in ipairs(data) do
+        monitor.setCursorPos(1,4+i)
+        monitor.setTextColour(colours.lime)
+        monitor.write(formatText(entry.name))
+        if entry.status then
+            monitor.setTextColour("green")
+            monitor.write(" [ON]")
+        else
+            monitor.setTextColour("red")
+            monitor.write("[OFF]")
+        end
+    end
+
+
+    -- End title
+    monitor.setCursorPos(1,13)
+    monitor.setTextColour(colours.orange)
+    monitor.write("  PRODUCTION  ")
 end
 
 showDisplay()

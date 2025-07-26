@@ -75,10 +75,10 @@ local function showDisplay()
         monitor.setTextColour(colours.lime)
         monitor.write(formatText(entry.name))
         if entry.status then
-            monitor.setTextColour("green")
+            monitor.setTextColour(colours.green)
             monitor.write(" [ON]")
         else
-            monitor.setTextColour("red")
+            monitor.setTextColour(colours.red)
             monitor.write("[OFF]")
         end
     end

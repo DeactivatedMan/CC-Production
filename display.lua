@@ -85,9 +85,11 @@ local function showDisplay()
 
 
     -- End title
-    monitor.setCursorPos(1,13)
+    monitor.setCursorPos(1,16)
     monitor.setTextColour(colours.orange)
     monitor.write("  PRODUCTION  ")
+    monitor.setCursorPos(1,17)
+    monitor.write("   TERMINAL  ")
 end
 
 showDisplay()

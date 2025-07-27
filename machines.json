@@ -1,10 +1,10 @@
 [
-    { "name": "Tree",       "status": false },
-    { "name": "Cow",        "status": false },
-    { "name": "Wheat",      "status": false },
-    { "name": "Flax",       "status": false },
-    { "name": "Iron",       "status": false },
-    { "name": "Thorium",    "status": false },
-    { "name": "Fuel",       "status": false },
-    { "name": "AUTO",       "status": false }
+    { "name": "Tree",       "status": false,    "relay": "14" },
+    { "name": "Cow",        "status": false,    "relay": "12" },
+    { "name": "Wheat",      "status": false,    "relay": "16" },
+    { "name": "Flax",       "status": false,    "relay": "17" },
+    { "name": "Iron",       "status": false,    "relay": "18" },
+    { "name": "Thorium",    "status": false,    "relay": "13" },
+    { "name": "Fuel",       "status": false,    "relay": "15" },
+    { "name": "AUTO",       "status": false,    "relay": "19" }
 ]

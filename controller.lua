@@ -16,10 +16,13 @@ local function showOptions()
 
     local data = textutils.unserialiseJSON(jsonStr)
 
+    term.clear()
     for i,entry in ipairs(data) do
         term.setCursorPos((term.getSize()[1]-15)/2,4+i)
-        term.setTextColour(colours.lime)
-        term.write(formatText(entry.name,10))
+        --term.setTextColour(colours.lime)
+        
+        term.setTextColour(colours.white)
+        term.write((i==selected and ">" or " ")..formatText(entry.name,10))
         if entry.status then
             term.setTextColour(colours.green)
             term.write(" [ON]")
@@ -31,3 +34,26 @@ local function showOptions()
 end
 
 showOptions()
+
+while true do
+    local event, key = os.pullEvent("key_up")
+    if key == keys.w or key == keys.up then
+        selected = selected - 1
+    elseif key == keys.s or key == keys.down then
+        selected = selected + 1
+    elseif key == keys.enter or key == keys.space then
+        local file = fs.open("machines.json", "r")
+        local jsonStr = file.readAll()
+        file.close()
+
+        local data = textutils.unserialiseJSON(jsonStr)
+
+        data[selected].status = not data[selected].status
+
+        local file = fs.open("machines.json", "w")
+        file.write(textutils.serialiseJSON(data))
+        file.close()
+    end
+    showOptions()
+    sleep(1)
+end

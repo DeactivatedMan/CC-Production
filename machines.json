@@ -6,5 +6,5 @@
     { "name": "Iron",       "status": false },
     { "name": "Thorium",    "status": false },
     { "name": "Fuel",       "status": false },
-    { "name": "AUTO",  "status": false }
+    { "name": "AUTO",       "status": false }
 ]

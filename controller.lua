@@ -36,7 +36,7 @@ end
 showOptions()
 
 while true do
-    local event, key = os.pullEvent("key_up")
+    local event, key, isHeld = os.pullEvent("key")
     if key == keys.w or key == keys.up then
         selected = selected - 1
     elseif key == keys.s or key == keys.down then
@@ -55,5 +55,7 @@ while true do
         file.close()
     end
     showOptions()
-    sleep(1)
+    if isHeld then
+        sleep()
+    end
 end

@@ -38,9 +38,8 @@ local function showOptions()
 
     term.clear()
     for i,entry in ipairs(data) do
-        term.setCursorPos((term.getSize()-15)/2,4+i)
-        
         if entry.name == "efficient" then
+            term.setCursorPos((term.getSize()-15)/2,5+i)
             term.setTextColour(colours.white)
             term.write("\n"..(i==selected and ">" or " ")..formatText(entry.name,10))
             if entry.status then
@@ -51,6 +50,7 @@ local function showOptions()
                 term.write("[OFF]")
             end
         else
+            term.setCursorPos((term.getSize()-15)/2,4+i)
             term.setTextColour(colours.lime)
             term.write((i==selected and ">" or " ")..formatText(entry.name,10))
             if entry.status then

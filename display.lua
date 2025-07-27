@@ -71,9 +71,9 @@ local function showDisplay()
     local data = textutils.unserialiseJSON(jsonStr)
 
     for i,entry in ipairs(data) do
-        monitor.setCursorPos(1,4+i)
 
         if entry.name == "efficient" then
+            monitor.setCursorPos(1,5+i)
             monitor.setTextColour(colours.white)
             monitor.write("\n"..formatText(entry.name,9))
             if entry.status then
@@ -84,6 +84,7 @@ local function showDisplay()
                 monitor.write("[OFF]")
             end
         else
+            monitor.setCursorPos(1,4+i)
             monitor.setTextColour(colours.lime)
             monitor.write(formatText(entry.name,9))
             if entry.status then

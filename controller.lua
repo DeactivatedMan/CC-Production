@@ -41,7 +41,7 @@ local function showOptions()
         if entry.name == "efficient" then
             term.setCursorPos((term.getSize()-15)/2,5+i)
             term.setTextColour(colours.white)
-            term.write("\n"..(i==selected and ">" or " ")..formatText(entry.name,10))
+            term.write((i==selected and ">" or " ")..formatText(entry.name,10))
             if entry.status then
                 term.setTextColour(colours.green)
                 term.write(" [ON]")

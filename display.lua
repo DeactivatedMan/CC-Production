@@ -75,7 +75,7 @@ local function showDisplay()
         if entry.name == "efficient" then
             monitor.setCursorPos(1,5+i)
             monitor.setTextColour(colours.white)
-            monitor.write("\n"..formatText(entry.name,9))
+            monitor.write(formatText(entry.name,9))
             if entry.status then
                 monitor.setTextColour(colours.green)
                 monitor.write(" [ON]")

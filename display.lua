@@ -5,12 +5,12 @@ local function formatNumber(num, chars)
     return string.format("%"..tostring(chars).."d", tostring(num))
 end
 
-local function formatText(str)
+local function formatText(str, chars)
     str = tostring(str)
-    if #str > 9 then
-        return str:sub(1, 9)
+    if #str > chars then
+        return str:sub(1, chars)
     else
-        return str .. string.rep(" ", 9 - #str)
+        return str .. string.rep(" ", chars - #str)
     end
 end
 
@@ -73,7 +73,7 @@ local function showDisplay()
     for i,entry in ipairs(data) do
         monitor.setCursorPos(1,4+i)
         monitor.setTextColour(colours.lime)
-        monitor.write(formatText(entry.name))
+        monitor.write(formatText(entry.name,9))
         if entry.status then
             monitor.setTextColour(colours.green)
             monitor.write(" [ON]")
@@ -92,4 +92,7 @@ local function showDisplay()
     monitor.write("   TERMINAL  ")
 end
 
-showDisplay()
+while true do
+    showDisplay()
+    sleep(1)
+end

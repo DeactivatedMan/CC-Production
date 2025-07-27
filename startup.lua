@@ -35,7 +35,7 @@ local yn = string.lower(read())
 
 if string.find(yn, "y") then
     shell.run("wget https://raw.githubusercontent.com/DeactivatedMan/CC-Production/refs/heads/main/display.lua displayB.lua")  -- Downloads display script
-    shell.run("wget https://raw.githubusercontent.com/DeactivatedMan/CC-Production/refs/heads/main/display.lua controllerB.lua")  -- Downloads controller script
+    shell.run("wget https://raw.githubusercontent.com/DeactivatedMan/CC-Production/refs/heads/main/controller.lua controllerB.lua")  -- Downloads controller script
     shell.run("wget https://raw.githubusercontent.com/DeactivatedMan/CC-Production/refs/heads/main/machines.json machinesB.json")  -- Downloads machines json
     write("Updated! (Or did absolutely nothing other than reset the files..)\nrun 'reboot' to initialise\n")
 end

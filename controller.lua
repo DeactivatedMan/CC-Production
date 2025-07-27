@@ -39,16 +39,29 @@ local function showOptions()
     term.clear()
     for i,entry in ipairs(data) do
         term.setCursorPos((term.getSize()-15)/2,4+i)
-        term.setTextColour(colours.lime)
         
-        term.write((i==selected and ">" or " ")..formatText(entry.name,10))
-        if entry.status then
-            term.setTextColour(colours.green)
-            term.write(" [ON]")
+        if entry.name == "efficient" then
+            term.setTextColour(colours.white)
+            term.write("\n"..(i==selected and ">" or " ")..formatText(entry.name,10))
+            if entry.status then
+                term.setTextColour(colours.green)
+                term.write(" [ON]")
+            else
+                term.setTextColour(colours.red)
+                term.write("[OFF]")
+            end
         else
-            term.setTextColour(colours.red)
-            term.write("[OFF]")
+            term.setTextColour(colours.lime)
+            term.write((i==selected and ">" or " ")..formatText(entry.name,10))
+            if entry.status then
+                term.setTextColour(colours.green)
+                term.write(" [ON]")
+            else
+                term.setTextColour(colours.red)
+                term.write("[OFF]")
+            end
         end
+        
     end
 end
 

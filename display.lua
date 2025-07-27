@@ -72,14 +72,27 @@ local function showDisplay()
 
     for i,entry in ipairs(data) do
         monitor.setCursorPos(1,4+i)
-        monitor.setTextColour(colours.lime)
-        monitor.write(formatText(entry.name,9))
-        if entry.status then
-            monitor.setTextColour(colours.green)
-            monitor.write(" [ON]")
+
+        if entry.name == "efficient" then
+            monitor.setTextColour(colours.white)
+            monitor.write("\n"..formatText(entry.name,9))
+            if entry.status then
+                monitor.setTextColour(colours.green)
+                monitor.write(" [ON]")
+            else
+                monitor.setTextColour(colours.red)
+                monitor.write("[OFF]")
+            end
         else
-            monitor.setTextColour(colours.red)
-            monitor.write("[OFF]")
+            monitor.setTextColour(colours.lime)
+            monitor.write(formatText(entry.name,9))
+            if entry.status then
+                monitor.setTextColour(colours.green)
+                monitor.write(" [ON]")
+            else
+                monitor.setTextColour(colours.red)
+                monitor.write("[OFF]")
+            end
         end
     end
 

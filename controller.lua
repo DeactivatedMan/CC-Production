@@ -18,7 +18,7 @@ local function showOptions()
 
     term.clear()
     for i,entry in ipairs(data) do
-        term.setCursorPos((term.getSize()[1]-15)/2,4+i)
+        term.setCursorPos((term.getSize()-15)/2,4+i)
         --term.setTextColour(colours.lime)
         
         term.setTextColour(colours.white)

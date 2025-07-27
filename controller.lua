@@ -38,7 +38,7 @@ local function showOptions()
 
     term.clear()
     for i,entry in ipairs(data) do
-        if entry.name == "efficient" then
+        if entry.name == "AUTO" then
             term.setCursorPos((term.getSize()-15)/2,5+i)
             term.setTextColour(colours.white)
             term.write((i==selected and ">" or " ")..formatText(entry.name,10))

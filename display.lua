@@ -72,7 +72,7 @@ local function showDisplay()
 
     for i,entry in ipairs(data) do
 
-        if entry.name == "efficient" then
+        if entry.name == "AUTO" then
             monitor.setCursorPos(1,5+i)
             monitor.setTextColour(colours.white)
             monitor.write(formatText(entry.name,9))

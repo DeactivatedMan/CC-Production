@@ -39,9 +39,8 @@ local function showOptions()
     term.clear()
     for i,entry in ipairs(data) do
         term.setCursorPos((term.getSize()-15)/2,4+i)
-        --term.setTextColour(colours.lime)
+        term.setTextColour(colours.lime)
         
-        term.setTextColour(colours.white)
         term.write((i==selected and ">" or " ")..formatText(entry.name,10))
         if entry.status then
             term.setTextColour(colours.green)

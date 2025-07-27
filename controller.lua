@@ -18,8 +18,6 @@ local function wrap(input, min,max)
     end
 end
 
-wrap(1,2,3)
-
 local function formatText(str, chars)
     str = tostring(str)
     if #str > chars then
@@ -88,7 +86,7 @@ while true do
 
         local relay = peripheral.wrap("redstone_relay_"..data[selected].relay)
         relay.setOutput("right", true)
-        sleep()
+        sleep(.1)
         relay.setOutput("right", false)
     end
     showOptions()

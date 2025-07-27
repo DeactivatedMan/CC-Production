@@ -85,6 +85,11 @@ while true do
         local file = fs.open("machines.json", "w")
         file.write(textutils.serialiseJSON(data))
         file.close()
+
+        local relay = peripheral.wrap("redstone_relay_"..data[selected].relay)
+        relay.setOutput("right", true)
+        sleep()
+        relay.setOutput("right", false)
     end
     showOptions()
     if isHeld then

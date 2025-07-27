@@ -1,5 +1,25 @@
 local selected = 1
 
+local file = fs.open("machines.json", "r")
+local jsonStr = file.readAll()
+file.close()
+
+local data = textutils.unserialiseJSON(jsonStr)
+
+local count = #data
+
+local function wrap(input, min,max)
+    if input < min then
+        return max
+    elseif input > max then
+        return min
+    else
+        return input
+    end
+end
+
+wrap(1,2,3)
+
 local function formatText(str, chars)
     str = tostring(str)
     if #str > chars then
@@ -38,9 +58,9 @@ showOptions()
 while true do
     local event, key, isHeld = os.pullEvent("key")
     if key == keys.w or key == keys.up then
-        selected = selected - 1
+        selected = wrap(selected - 1,1,count)
     elseif key == keys.s or key == keys.down then
-        selected = selected + 1
+        selected = wrap(selected + 1, 1, count)
     elseif key == keys.enter or key == keys.space then
         local file = fs.open("machines.json", "r")
         local jsonStr = file.readAll()

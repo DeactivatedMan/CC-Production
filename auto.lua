@@ -10,7 +10,7 @@ local data = textutils.unserialiseJSON(jsonStr)
 
 local function toggleRelay(relay, status)
     local relay = peripheral.wrap("redstone_relay_"..relay)
-    if (relay.getInput("left") > 0 and not status) or (relay.getInput("left") == 0 and status) then
+    if (relay.getInput("left") and not status) or (relay.getInput("left") == 0 and status) then
         relay.setOutput("right", true)
         sleep(.1)
         relay.setOutput("right", false)

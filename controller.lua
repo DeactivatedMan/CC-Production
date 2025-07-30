@@ -60,12 +60,12 @@ local function showOptions()
             end
         end
 
-        local relay = peripheral.wrap("redstone_relay_"..entry.relay)
-        if entry.status ~= (relay.getInput("left")>0) then
+        --[[local relay = peripheral.wrap("redstone_relay_"..entry.relay)
+        if entry.status ~= (relay.getInput("left")~=0) then
             relay.setOutput("right", true)
             sleep(.1)
             relay.setOutput("right", false)
-        end
+        end]]
         
     end
 end
@@ -100,7 +100,7 @@ while true do
         end
  
         local relay = peripheral.wrap("redstone_relay_"..data[selected].relay)
-        if (relay.getInput("left") > 0 and not data[selected].status) or (relay.getInput("left") == 0 and data[selected].status) then
+        if (relay.getInput("left") and not data[selected].status) or (relay.getInput("left") == 0 and data[selected].status) then
             relay.setOutput("right", true)
             sleep(.1)
             relay.setOutput("right", false)

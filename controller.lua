@@ -100,7 +100,7 @@ while true do
         end
  
         local relay = peripheral.wrap("redstone_relay_"..data[selected].relay)
-        if (relay.getInput("left") and not data[selected].status) or (relay.getInput("left") == 0 and data[selected].status) then
+        if (relay.getInput("left") and not data[selected].status) or (not relay.getInput("left")and data[selected].status) then
             relay.setOutput("right", true)
             sleep(.1)
             relay.setOutput("right", false)

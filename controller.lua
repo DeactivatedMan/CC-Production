@@ -94,6 +94,7 @@ while true do
         if data[selected].name == "AUTO" then
             if data[selected].status then
                 fs.makeDir("runAuto")
+                shell.openTab("auto")
             else
                 fs.delete("runAuto")
             end

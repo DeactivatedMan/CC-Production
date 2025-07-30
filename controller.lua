@@ -59,6 +59,13 @@ local function showOptions()
                 term.write("[OFF]")
             end
         end
+
+        local relay = peripheral.wrap("redstone_relay_"..entry.relay)
+        if entry.status ~= (relay.getInput("left")>0) then
+            relay.setOutput("right", true)
+            sleep(.1)
+            relay.setOutput("right", false)
+        end
         
     end
 end
@@ -84,10 +91,28 @@ while true do
         file.write(textutils.serialiseJSON(data))
         file.close()
 
+        if data[selected].name == "AUTO" then
+            if data[selected].status then
+                fs.makeDir("runAuto")
+            else
+                fs.delete("runAuto")
+            end
+        end
+ 
         local relay = peripheral.wrap("redstone_relay_"..data[selected].relay)
-        relay.setOutput("right", true)
-        sleep(.1)
-        relay.setOutput("right", false)
+        if (relay.getInput("left") > 0 and not data[selected].status) or (relay.getInput("left") == 0 and data[selected].status) then
+            relay.setOutput("right", true)
+            sleep(.1)
+            relay.setOutput("right", false)
+        end
+
+        if (relay.getInput("left") == 0 and data[selected].status) then
+            data[selected].status = false
+
+            local file = fs.open("machines.json", "w")
+            file.write(textutils.serialiseJSON(data))
+            file.close()
+        end
     end
     showOptions()
     if isHeld then

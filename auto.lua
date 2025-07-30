@@ -30,6 +30,10 @@ for _,entry in ipairs(data) do
         toggleRelay(entry.relay, entry.status)
     elseif entry.name == "AUTO" then
         toggleRelay(entry.relay, entry.status)
+    else
+        entry.status = false
+        saveData()
+        toggleRelay(entry.relay, entry.status)
     end
 end
 
